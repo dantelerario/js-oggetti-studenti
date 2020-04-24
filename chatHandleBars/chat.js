@@ -29,6 +29,29 @@ $(document).ready( function() {
 
 
 
+  var storedMessages = [
+    {
+      text: 'Domani passo',
+      time: 'ieri',
+      messageClass: 'received'
+    },
+    {
+      text: 'Ok?',
+      time: 'ieri',
+      messageClass: 'received'
+    },
+    {
+      text: 'Prendi la birra',
+      time: 'ieri',
+      messageClass: 'sent'
+    }
+  ];
+
+
+
+
+
+
   // handlebars
   var templateSource = $('#template').html();
 
