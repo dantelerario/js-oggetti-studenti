@@ -8,6 +8,26 @@ $(document).ready( function() {
   var boxMessage = $('.boxMessage');
   var btnMessage = $('.btnMessage');
   var chatBox = $('.chat');
+  var storedMessages = [
+    {
+      text: 'Domani passo',
+      time: 'ieri',
+      messageClass: 'received'
+    },
+    {
+      text: 'Ok?',
+      time: 'ieri',
+      messageClass: 'received'
+    },
+    {
+      text: 'Prendi la birra',
+      time: 'ieri',
+      messageClass: 'sent'
+    }
+  ];
+
+
+
 
   // handlebars
   var templateSource = $('#template').html();
@@ -39,10 +59,6 @@ $(document).ready( function() {
     var timerMessage = setTimeout(function() {
       var received = $('#template').clone();
 
-      var time = new Date();
-      var hour = addZero( time.getHours() );
-      var minutes = addZero( time.getMinutes() );
-      var timeToSend = hour + ':' + minutes;
       received.children('.message-timer').text(timeToSend);
 
       var messageDataReceived = {
@@ -58,6 +74,21 @@ $(document).ready( function() {
     }, 1000);
 
   });
+
+  //auto-generated chat
+  var autoChat = $('#template').html();
+
+  var autoChatTemplate = Handlebars.compile(autoChat);
+
+    for (i = 0; i < storedMessages.length; i++) {
+      var autoInputList = $('#template').clone();
+
+      var storedMessagesChat = $('#template').clone();
+
+      var chatHtml = template(storedMessages[i]);
+
+      chatBox.append(chatHtml);
+    }
 
 
 }); /* END DOCUMENT */
